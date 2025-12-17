@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>セブン商品コード検索</title>
+</head>
+<body>
+  <h1>セブン商品検索</h1>
+
+  <input id="code" type="text" placeholder="商品コードを入力">
+  <button onclick="go()">検索</button>
+
+  <script>
+    function go() {
+      const code = document.getElementById("code").value.trim();
+
+      if (code === "") {
+        alert("商品コードを入力して");
+        return;
+      }
+
+      const url = "https://www.sej.co.jp/products/a/item/" + code + "/";
+      location.href = url;
+    }
+  </script>
+</body>
+</html>
