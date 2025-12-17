@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>SEJ商品検索</title>
+</head>
+
+<body style="font-family:sans-serif">
+
+<h2>SEJ商品検索</h2>
+
+<input id="code" placeholder="例：322600">
+<button onclick="search()">検索</button>
+
+<p id="link"></p>
+
+<script>
+function search() {
+  const code = document.getElementById("code").value.trim();
+  if (!code) return;
+
+  const url = `https://www.sej.co.jp/products/a/item/${code}/`;
+
+  document.getElementById("link").innerHTML =
+    `<a href="${url}" target="_blank">${url}</a>`;
+}
+</script>
+
+</body>
+</html>
