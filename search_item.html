@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>SEJ商品コード検索</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body style="font-family:sans-serif">
+
+<h2>SEJ 商品コード検索</h2>
+
+<input
+  id="code"
+  placeholder="SEJ商品コード（6桁）"
+  maxlength="6"
+  inputmode="numeric"
+  autofocus
+  oninput="handleInput()"
+>
+
+<script>
+function handleInput() {
+  const input = document.getElementById("code");
+
+  // 全角 → 半角
+  let v = input.value.replace(/[０-９]/g, s =>
+    String.fromCharCode(s.charCodeAt(0) - 0xFEE0)
+  );
+
+  // 数字以外削除
+  v = v.replace(/\D/g, '');
+
+  // 6桁制限
+  v = v.slice(0, 6);
+  input.value = v;
+
+  // 6桁そろったら即ジャンプ
+  if (v.length === 6) {
+    location.href = `https://www.sej.co.jp/products/a/item/${v}/`;
+  }
+}
+</script>
+
+</body>
+</html>
